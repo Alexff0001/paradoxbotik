@@ -24,7 +24,7 @@ links = ['www', 'https://']
 async def on_message(message):
     await bot.process_commands(message)
 
-    msg = message.content.lowe()
+    msg = message.content.lower()
 
     if msg in links:
         await message.delete()
