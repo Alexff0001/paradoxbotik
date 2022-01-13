@@ -18,6 +18,18 @@ bot = bot.Bot(command_prefix = '!', case_insensitive = True, intents = discord.I
 bot.remove_command('help')
 
 
+links = ['www', 'https://']
+
+@bot.event
+async def on_message(message):
+    await bot.process_commands(message)
+
+    msg = message.content.lowe()
+
+    if msg in links:
+        await message.delete()
+
+
 @bot.event
 async def on_ready():
     DiscordComponents(bot)
@@ -45,7 +57,7 @@ async def on_member_join(member):
     embed1.set_footer(text = f'ID: {member.id}')
     embed1.timestamp = datetime.datetime.utcnow()
     embed = discord.Embed(
-        description = '__Добро пожаловать на официальный дискорд сервере проекта__ **__Paradox Role Play__**',
+        description = '__Добро пожаловать на официальный дискорд сервер проекта__ **__Paradox Role Play__**',
         color = discord.Color.from_rgb(244, 127, 255)
         )
     embed.set_thumbnail(url = member.avatar_url)
