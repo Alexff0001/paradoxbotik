@@ -37,7 +37,7 @@ async def on_ready():
     embed = discord.Embed(description = '**Бот работает!**')
     embed.timestamp = datetime.datetime.utcnow()
     await bot.change_presence(activity=discord.Game(name="Paradox Role Play"))
-    await bot.get_channel(930825093238652938).send(embed = embed)
+    await bot.get_channel(881448669809885254).send(embed = embed)
 
 
 @bot.command(aliases = ['тест'])
@@ -47,7 +47,7 @@ async def test(ctx):
 
 @bot.event
 async def on_member_join(member):
-    role = discord.utils.get(member.guild.roles, id = 922190850589622345)
+    role = discord.utils.get(member.guild.roles, id = 938309468180074497)
     embed1 = discord.Embed(
         title = 'Пользователь присоединился',
         description = f'{member.mention} {len(list(member.guild.members))} по счёту на сервере\nАккаунт создан ' + f"{member.created_at.strftime('%d %B %Yг.')}",
@@ -64,7 +64,19 @@ async def on_member_join(member):
     embed.set_author(name = 'Welcome!', icon_url = member.avatar_url)
     embed.timestamp = datetime.datetime.utcnow()
     await member.add_roles(role)
-    await bot.get_channel(930825093238652938).send(embed = embed1)
-    await bot.get_channel(922190850614763619).send(f'{member.mention}', embed = embed)
+    await bot.get_channel(881448669809885254).send(embed = embed1)
+    await bot.get_channel(938309496114147388).send(f'{member.mention}', embed = embed)
+
+
+@bot.command(aliases = ['инфо'])
+async def info(ctx):
+    em = discord.Embed(
+        title = 'Paradox Role Play Информация',
+        description = 'Для подключения к серверу просто найдите в списке серверов PARADOX RP\n\n**Торговая площадка ->** https://discord.gg/db3mnTRG8R\n\n**Мы Вконтакте ->** https://vk.com/paradox_gta\n**Беседа в ВК ->** https://vk.me/join/X7U86XsIq6hTYhcKgogzo1SBHnHYhnBT53A=\n**YouTube Канал ->** https://www.youtube.com/channel/UCQzUrQC6u6a0EFgGOSAO76w\n\n**Cчёт для пожертвований на развитие сервера ->** https://www.tinkoff.ru/cf/6nLsTXiR397\n*В комментариях указываем свой ник. На сервере выдаём коины в Х3 размере от пополнения.*'
+        )
+    em.set_footer(text = 'Paradox RP Bot')
+    em.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed = em)
+
 
 bot.run('OTMwODI0NTE4MDUyNzQxMTIw.Yd7f4g.bdwSwg_04wyCusAb0GEJlpmKJqA')
